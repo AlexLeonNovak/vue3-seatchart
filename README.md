@@ -1,39 +1,77 @@
-# seatchart
+# Vue 3 SeatChart
 
-This template should help get you started developing with Vue 3 in Vite.
+Based on [omahili/seatchart.js](https://github.com/omahili/seatchart.js)
 
-## Recommended IDE Setup
+## Install
+### Npm
+```bash
+npm install vue3-seatchart
+```
+### Yarn
+```bash
+yarn add vue3-seatchart
+```
+## Usage
+Import SeatChart and add options:
+```vue
+<script setup lang="ts">
+import { SeatChart } from 'vue3-seatchart';
+import { type Options } from 'seatchart';
+import 'seatchart/dist/seatchart.min.css';
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+const options: Options = {
+  map: {
+    rows: 7,
+    columns: 7,
+    seatTypes: {
+      default: {
+        label: 'Economy',
+        cssClass: 'economy',
+        price: 10,
+      },
+    },
+  },
+};
 
-## Type Support for `.vue` Imports in TS
+const onSubmit = (e: SubmitEvent) => {
+  console.log(e)
+}
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+</script>
 
-## Customize configuration
+<template>
+  //...
+  <SeatChart :options="options" @cart:submit="onSubmit" />
+  //...
+</template>
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+<style scoped>
+  .economy {
+    color: white;
+    background-color: #43aa8b;
+  }
+</style>
 
-## Project Setup
+```
+Or add via plugin
+```typescript
+// ./src/main.ts
 
-```sh
-npm install
+import { createApp } from 'vue'
+import App from './App.vue'
+import { useSeatChart } from 'vue3-seatchart';
+import 'seatchart/dist/seatchart.min.css';
+
+const app = createApp(App)
+app.use(useSeatChart);
+app.mount('#app')
 ```
 
-### Compile and Hot-Reload for Development
+## Events
+| Name                  | Description                                                                                                           | Return value                                                                |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| **cart:submit**       | When he submit button is pressed                                                                                      | [SubmitEvent](https://seatchart.js.org/interfaces/SubmitEvent.html)         | 
+| **update:cartChange** | When the cart changes. More specifically when a seat is selected, unselected, removed from the cart or on cart clear. | [CartChangeEvent](https://seatchart.js.org/interfaces/CartChangeEvent.html) | 
+| **update:seatChange** | When a seat changes. More specifically when a seat is selected, unselected, removed from the cart or on cart clear.   | [SeatChangeEvent](https://seatchart.js.org/interfaces/SeatChangeEvent.html) | 
+| **update:cartClear**  | When the cart is cleared from all its items.                                                                          | [CartClearEvent](https://seatchart.js.org/interfaces/CartClearEvent.html)                                                          | 
 
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
