@@ -1,0 +1,61 @@
+{
+  "name": "vue3-seatchart",
+  "license": "MIT",
+  "version": "0.0.1",
+  "author": {
+    "name": "Alex Leon",
+    "email": "aexleonnovak@gmail.com"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "vue 3",
+    "seatchart",
+    "seat chart"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/seatchart-library.umd.js",
+  "module": "./dist/seatchart-library.es.js",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/seatchart-library.es.js",
+      "require": "./dist/seatchart-library.umd.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "build:library": "ts-node --skipProject build-library.ts",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "seatchart": "^0.1.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.4"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.8.0",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.12.5",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "@vue/tsconfig": "^0.5.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "npm-run-all2": "^6.1.2",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.4.0",
+    "vite": "^5.2.8",
+    "vue-tsc": "^2.0.11"
+  }
+}
