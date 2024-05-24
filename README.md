@@ -2,6 +2,10 @@
 
 Based on [omahili/seatchart.js](https://github.com/omahili/seatchart.js)
 
+- [Demo](https://alexleonnovak.github.io/vue3-seatchart/)
+- [Repository](https://github.com/AlexLeonNovak/vue3-seatchart)
+- [NPM](https://www.npmjs.com/package/vue3-seatchart)
+
 ## Install
 ### Npm
 ```bash
@@ -45,7 +49,7 @@ const onSubmit = (e: SubmitEvent) => {
   //...
 </template>
 
-<style scoped>
+<style>
   .economy {
     color: white;
     background-color: #43aa8b;
