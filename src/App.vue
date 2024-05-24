@@ -1,30 +1,30 @@
 <script setup lang="ts">
 import SeatChart from '@/library/components/SeatChart.vue';
-import type { Options, SubmitEvent } from 'seatchart'
+import type { CartChangeEvent, CartClearEvent, Options, SeatChangeEvent, SubmitEvent } from 'seatchart'
 import 'seatchart/dist/seatchart.min.css';
 
 const options: Options = {
   cart: {
     currency: '₴',
-    submitLabel: 'Придбати',
+    submitLabel: 'Checkout',
   },
   map: {
     rows: 10,
     columns: 10,
     seatTypes: {
       default: {
-        label: 'Економ',
+        label: 'Economy',
         cssClass: 'economy',
         price: 150,
       },
       first: {
-        label: 'Перший клас',
+        label: 'First class',
         cssClass: 'first-class',
         price: 250,
         seatRows: [0, 1, 2],
       },
       reduced: {
-        label: 'Знижений',
+        label: 'Reduced',
         cssClass: 'reduced',
         price: 99,
         seatRows: [7, 8, 9],
@@ -45,43 +45,46 @@ const options: Options = {
 }
 
 const onSubmit = (e: SubmitEvent) => {
-  console.log(e)
+  console.log('SubmitEvent', e)
+  alert(JSON.stringify(e, null, 4));
 }
+const onCartChange = (e: CartChangeEvent) => console.log('CartChangeEvent', e);
+const onCartClear = (e: CartClearEvent) => console.log('CartClearEvent', e);
+const onSeatChange = (e: SeatChangeEvent) => console.log('SeatChangeEvent', e);
 
 </script>
 
 <template>
 
   <main>
-    <SeatChart :options="options" @cart:submit="onSubmit" />
+    <SeatChart :options="options"
+               @cart:submit="onSubmit"
+               @update:cartChange="onCartChange"
+               @update:cartClear="onCartClear"
+               @update:seatChange="onSeatChange"
+    />
+    <h2>View the console to see events</h2>
   </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<style>
+body {
+  display: flex;
+  justify-content: center;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.economy {
+  color: white;
+  background-color: #43aa8b;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.first-class {
+  color: white;
+  background-color: #277da1;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.reduced {
+  color: white;
+  background-color: #f8961e;
 }
 </style>
