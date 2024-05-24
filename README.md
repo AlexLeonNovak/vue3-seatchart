@@ -74,7 +74,7 @@ app.mount('#app')
 ## Events
 | Name                  | Description                                                                                                           | Return value                                                                |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
-| **cart:submit**       | When he submit button is pressed                                                                                      | [SubmitEvent](https://seatchart.js.org/interfaces/SubmitEvent.html)         | 
+| **cart:submit**       | When the submit button is pressed                                                                                     | [SubmitEvent](https://seatchart.js.org/interfaces/SubmitEvent.html)         | 
 | **update:cartChange** | When the cart changes. More specifically when a seat is selected, unselected, removed from the cart or on cart clear. | [CartChangeEvent](https://seatchart.js.org/interfaces/CartChangeEvent.html) | 
 | **update:seatChange** | When a seat changes. More specifically when a seat is selected, unselected, removed from the cart or on cart clear.   | [SeatChangeEvent](https://seatchart.js.org/interfaces/SeatChangeEvent.html) | 
 | **update:cartClear**  | When the cart is cleared from all its items.                                                                          | [CartClearEvent](https://seatchart.js.org/interfaces/CartClearEvent.html)                                                          | 
