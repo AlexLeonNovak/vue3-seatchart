@@ -1,7 +1,8 @@
 {
   "name": "vue3-seatchart",
   "license": "MIT",
-  "version": "0.0.3",
+  "version": "0.0.4",
+  "homepage": "https://github.com/AlexLeonNovak/vue3-seatchart",
   "author": {
     "name": "Alex Leon",
     "email": "aexleonnovak@gmail.com"
