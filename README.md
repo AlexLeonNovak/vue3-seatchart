@@ -79,3 +79,40 @@ app.mount('#app')
 | **update:seatChange** | When a seat changes. More specifically when a seat is selected, unselected, removed from the cart or on cart clear.   | [SeatChangeEvent](https://seatchart.js.org/interfaces/SeatChangeEvent.html) | 
 | **update:cartClear**  | When the cart is cleared from all its items.                                                                          | [CartClearEvent](https://seatchart.js.org/interfaces/CartClearEvent.html)                                                          | 
 
+## Exposed methods
+| Method | Description | Return value |
+| -- | -- | -- |
+| **checkoutCart** | Call submit checkout cart | [SubmitEvent](https://seatchart.js.org/interfaces/SubmitEvent.html) |
+
+### Example
+```vue
+<script setup lang="ts">
+import { ref } from 'vue';
+import { SeatChart } from 'vue3-seatchart';
+import type { Options, SubmitEvent } from 'seatchart';
+import 'seatchart/dist/seatchart.min.css';
+
+const seatChartRef = ref<typeof SeatChart>();
+
+const options: Options = {
+  // ...
+  cart: {
+    visible: false,
+  },
+  // ...
+};
+
+const onCheckout = () => {
+  const checkoutData: SubmitEvent = seatChartRef.value?.checkoutCart();
+  console.log(checkoutData);
+}
+
+</script>
+
+<template>
+  //...
+  <SeatChart :options="options" ref="seatChartRef" />
+  <button @click="onCheckout">Checkout</button>
+  //...
+</template>
+```

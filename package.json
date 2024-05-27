@@ -1,7 +1,7 @@
 {
   "name": "vue3-seatchart",
   "license": "MIT",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "https://github.com/AlexLeonNovak/vue3-seatchart",
   "author": {
     "name": "Alex Leon",
@@ -37,7 +37,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "seatchart": "^0.1.0"
+    "seatchart": "^0.1.0",
+    "vue-router": "^4.3.2"
   },
   "peerDependencies": {
     "vue": "^3.4"
